@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // Composant fonctionnel MyApp qui inclut le composant Nom
+      function MyApp() {
+        return (
+          <div>
+            <h1>Formulaire :</h1>
+            <Nom /> {/* Appel du composant Nom */}
+            <Prenom />
+          </div>
+        );
+      }
+      // Composant fonctionnel Nom avec gestion de l'état
+      function Nom() {
+        // Utilisation du hook useState pour gérer l'état
+        const [textra, setTextra] = React.useState('');
+        // Gestionnaire de changement pour mettre à jour l'état
+        const handleChange = (event) => {
+          setTextra(event.target.value); // Met à jour l'état avec la valeur de l'entrée
+        };
+
+        return (
+          <div>
+            Votre Nom : 
+            <input
+              name="nomtextra"
+              type="text" // Correction du type d'entrée
+              value={textra} // Lier la valeur de l'état à l'entrée
+              onChange={handleChange} // Lier le gestionnaire onChange
+            />
+          </div>
+        );
+      }
+        function Prenom(){
+            const [textra, setTextra] = React.useState('');
+            const handleChange = (event) => {
+                setTextra(even.target.value);
+            };
+            return (
+                <div>
+                    Votre Prenom : 
+                    <input 
+                        name="prenomtextra"
+                        type="text"
+                        value={textra}
+                        onChange={handleChange}
+                    />
+                </div>
+                    
+            )
+        }
+      // Rendu du composant principal MyApp dans le DOM
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+    </script>
+  </body>
+</html>
