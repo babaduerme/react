@@ -8,7 +8,7 @@ import { createBrowserRouter, RouterProvider, useNavigate } from 'react-router-d
 const router = createBrowserRouter([
 {
   path:"/",
-  element: <App />
+  element: <App />,
 },
 {
 
