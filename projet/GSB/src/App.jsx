@@ -55,7 +55,7 @@ const App = () => {
 
   return (
 
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen bg-gray-200">
       <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
 
         <img src="../src/images/image-GSB-1.png" alt="Logo" className="mx-auto mb-5 object-cover h-15 w-15"/>
@@ -71,7 +71,7 @@ const App = () => {
           <div className="mb-4">
 
             <label htmlFor="login" className="block font-medium mb-2">
-              Login
+              Login :
             </label>
 
             <input
@@ -88,7 +88,7 @@ const App = () => {
           <div className="mb-7">
 
             <label htmlFor="password" className="block font-medium mb-2">
-              Mot de passe
+              Mot de passe :
             </label>
 
             <input
