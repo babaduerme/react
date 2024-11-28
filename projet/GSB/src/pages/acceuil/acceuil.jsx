@@ -1,14 +1,13 @@
-import Navbar from '../barrenav/navebar'
-import React, { useState } from "react";
+// src/pages/acceuil/acceuil.jsx
 
-const acceuil = () => {
+import React from 'react';
 
-}
-return (
-    <div>
-        <div>
-
-        </div>
+const Acceuil = () => {
+  return (
+    <div className="flex justify-center items-center h-screen bg-green-200">
+      <h1 className="text-4xl font-bold">Bienvenue sur la page d'accueil !</h1>
     </div>
-);
-export default acceuil;
+  );
+};
+
+export default Acceuil;

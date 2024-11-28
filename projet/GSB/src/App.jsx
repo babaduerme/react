@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import api from './api/api';
 
 
@@ -8,7 +9,9 @@ const App = () => {
     password: '',
   });
 
-  const [erreurLogin, setErreurLogin] = useState(false); 
+  const [erreurLogin, setErreurLogin] = useState(false);
+  const navigate = useNavigate(); // Permet de naviguer vers d'autres pages
+ 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +44,9 @@ const App = () => {
       });
 
       if (response.data) {
-        console.log(response.data); 
+        navigate('/acceuil');
+        console.log(response.data);
+
         setErreurLogin(false); 
         
       } else {
