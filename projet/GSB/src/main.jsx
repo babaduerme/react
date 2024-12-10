@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css'
 import App from './App.jsx'
-import acceuil from './pages/acceuil/acceuil.jsx'
+import Acceuil from './pages/acceuil/acceuil.jsx';
+import Navebar from './pages/barrenav/navebar.jsx';
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,11 @@ const router = createBrowserRouter([
   },
   {
     path:"/acceuil",
-    element: <acceuil />
+    element: <Acceuil />
+  },
+  {
+    path: "/navebar",
+    element: <Navbar />
   }
   ])
   
@@ -20,4 +25,4 @@ const router = createBrowserRouter([
     <StrictMode>
       <RouterProvider router={router}/>
     </StrictMode>,
-  )
+  );
