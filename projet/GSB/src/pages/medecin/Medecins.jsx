@@ -11,8 +11,14 @@ const Medecins = () => {
     <>
     <Navbar />
 
-    <div>
-      <h1>Medecins Page {nom} {prenom}</h1>
+    <div className="flex justify-normal h-screen bg-slate-100">
+    <h1>Médecins Page</h1>
+        <p>Nom: {nom}</p>
+        <p>Prénom: {prenom}</p>
+        <p>Adresse: {adresse}</p>
+        <p>Code Postal: {cp}</p>
+        <p>Ville: {ville}</p>
+        <p>ID: {id}</p>
     </div>
     </>
   );

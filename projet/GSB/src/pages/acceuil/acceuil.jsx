@@ -12,7 +12,7 @@ const Acceuil = () => {
   return (
     <>
       <Navbar />
-      <div className="flex justify-normal h-screen bg-gray-100">
+      <div className="flex justify-normal h-screen bg-slate-100">
       <h1>Bonjour {nom} {prenom}, {adresse} {id} {cp} {ville}</h1> 
       <Outlet />
       </div>

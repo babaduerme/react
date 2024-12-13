@@ -2,7 +2,6 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link, useLocation } from 'react-router-dom';
 
-
 const navigation = [
   { name: 'Dashboard', href: '/acceuil', current: true },
   { name: 'Rapports', href: '/acceuil/rapports', current: false },
@@ -10,7 +9,7 @@ const navigation = [
 ];
 
 export default function Navbar() {
-  const location = useLocation(); // Accéder à location.state
+  const location = useLocation(); 
   const { nom, prenom, adresse, cp, id, ville } = location.state || {};
 
   return (
@@ -34,7 +33,7 @@ export default function Navbar() {
               {/* Logo et Menu principal */}
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <Link to="/" className="flex-shrink-0">
-                <img src="../src/images/image-GSB-1-removebg-preview.png" className="h-12 w-13" alt="Logo" />
+                  <img src="../src/images/image-GSB-1-removebg-preview.png" className="h-12 w-13" alt="Logo" />
                 </Link>
 
                 <div className="hidden sm:block sm:ml-6">
@@ -43,6 +42,7 @@ export default function Navbar() {
                       <Link
                         key={item.name}
                         to={item.href}
+                        state={{ nom, prenom, adresse, cp, id, ville }} 
                         className="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium"
                       >
                         {item.name}
