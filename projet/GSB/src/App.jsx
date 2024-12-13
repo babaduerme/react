@@ -7,6 +7,7 @@ const App = () => {
   const [formData, setFormData] = useState({
     login: '',
     password: '',
+    
   });
 
   const [erreurLogin, setErreurLogin] = useState(false);
@@ -43,10 +44,17 @@ const App = () => {
         
       });
 
-      if (response.data) {
-        navigate('/acceuil');
-        console.log(response.data);
+      console.log("API Responce:", response);
 
+      if (response.data) {
+        navigate('/acceuil', {state: {
+          nom: response.data.nom,
+           prenom: response.data.prenom,  
+           adresse: response.data.adresse, 
+           cp: response.data.cp, 
+           id: response.data.id, 
+           ville: response.data.ville}});
+        console.log(response.data);
         setErreurLogin(false); 
         
       } else {
