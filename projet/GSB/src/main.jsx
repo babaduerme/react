@@ -15,14 +15,18 @@ const router = createBrowserRouter([
   {
     path: "/acceuil",
     element: <Acceuil />,
-  },
-  {
-    path: "/acceuil/rapports",
-    element: <Rapports />,
-  },
-  {
-    path: "/acceuil/medecins",
-    element: <Medecins />,
+    /*ici, c'est le tableau d'objets children qui va contenir
+    les routes des enfants spécifiquesau parent Acceuil */
+     children: [
+      {
+        path: "rapports", 
+        element: <Rapports />,
+      },
+      {
+        path: "medecins",
+        element: <Medecins />,
+      },
+    ],
   },
 ]);
 
