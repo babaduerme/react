@@ -11,6 +11,7 @@ const navigation = [
 ];
 
 export default function Navbar() {
+ 
   const location = useLocation(); 
   const { nom, prenom, adresse, cp, id, ville } = location.state || {};
 
