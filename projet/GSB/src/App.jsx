@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from './api/api';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
-
-// Configuração da instância Axios
-const api = axios.create({
-  baseURL: 'http://172.16.61.61/restGSB',
-});
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -24,11 +19,6 @@ const App = () => {
     }));
   };
 
-  /**
-   * Tentativa de conexão com a API via GET usando os parâmetros "login" e "mdp".
-   * Em caso de sucesso, navega para a página de "acceuil" com os dados do usuário.
-   * Em caso de erro, exibe uma mensagem de erro.
-   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
