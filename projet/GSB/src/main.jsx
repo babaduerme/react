@@ -7,6 +7,7 @@ import Acceuil from './pages/acceuil/acceuil.jsx';
 import Rapports from './pages/rapport/Rapports.jsx';
 import Medecins from './pages/medecin/Medecins.jsx';
 import MedecinDetails from './pages/medecin/MedecinDetails.jsx'; 
+import RapportsDetails from './pages/rapport/RapportsDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,12 @@ const router = createBrowserRouter([
       {
         path: "rapports", 
         element: <Rapports />,
+        children: [
+          {
+            path: ":id",
+            element: <RapportsDetails />,
+          }
+        ]
       },
       {
         path: "medecins",
