@@ -28,11 +28,7 @@ const Acceuil = () => {
         <div className="container mx-auto px-4 flex-grow">
           <Outlet />
         </div>
-        <div className="bg-zinc-800 py-2 border-t border-zinc-700">
-          <div className="container mx-auto px-4">
-            <p className="text-gray-500 text-xs font-mono text-center">SYSTÈME.GSB.V2 // MODE: OPÉRATIONNEL</p>
-          </div>
-        </div>
+       
       </div>
     </>
   );
@@ -47,7 +43,7 @@ function updateSystemTime() {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
-    timeElement.textContent = `SYS.TIME: ${hours}:${minutes}:${seconds}`;
+    timeElement.textContent = `Horloge: ${hours}:${minutes}:${seconds}`;
   }
   setTimeout(updateSystemTime, 1000);
 }
