@@ -8,6 +8,7 @@ import Rapports from './pages/rapport/Rapports.jsx';
 import Medecins from './pages/medecin/Medecins.jsx';
 import MedecinDetails from './pages/medecin/MedecinDetails.jsx'; 
 import RapportsDetails from './pages/rapport/RapportsDetails.jsx';
+import RapportsModification from './pages/rapport/RapportsModification.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
           {
             path: ":id",
             element: <RapportsDetails />,
+          },
+          {
+            path: "id",
+            element: <RapportsModification />,
           }
         ]
       },

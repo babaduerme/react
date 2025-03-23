@@ -16,13 +16,7 @@ const Rapports = ({ medecinId }) => {
       try {
         console.log(`Fetching reports for medecinId: ${medecinId}`);
         const response = await api.get(`/rapports/${medecinId}`);
-        //console.log('API response:', response.data);
         const allRapports = response.data || [];
-        
-        // Loguer chaque rapport pour voir leur structure
-        allRapports.forEach(rapport => {
-         //console.log('Rapport:', rapport);
-        });
         
         setAllRapports(allRapports);
       } catch (err) {
@@ -51,18 +45,27 @@ const Rapports = ({ medecinId }) => {
   };
 
   if (loading) {
-    return <div className="text-center py-4">Chargement des rapports...</div>;
+    return (
+      <div className="flex justify-center items-center py-12">
+        <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-amber-500 border-r-2 border-amber-500 border-b-2 border-transparent"></div>
+        <span className="ml-3 text-gray-400 font-mono">Chargement des rapports...</span>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="text-red-600 py-4">{error}</div>;
+    return (
+      <div className="p-6 bg-red-900 border border-red-700 rounded-md">
+        <p className="text-red-300 font-mono">{error}</p>
+      </div>
+    );
   }
 
   if (!allRapports || allRapports.length === 0) {
     return (
-      <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-md">
-        <p className="text-center text-yellow-700">Aucun rapport n'a été trouvé.</p>
-        <p className="text-center text-sm text-yellow-600 mt-2">
+      <div className="p-6 bg-zinc-800 border border-zinc-700 rounded-md">
+        <p className="text-center text-amber-500 font-mono">Aucun rapport n'a été trouvé.</p>
+        <p className="text-center text-sm text-gray-400 mt-2 font-mono">
           ID médecin: {medecinId}
         </p>
       </div>
@@ -70,63 +73,33 @@ const Rapports = ({ medecinId }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow p-4">
-      <h2 className="text-xl font-semibold mb-4">Tous les rapports ({allRapports.length})</h2>
+    <div className="bg-zinc-900 rounded-lg shadow p-4">
+      <h2 className="text-xl font-mono uppercase tracking-wide text-amber-500 mb-6">Tous les rapports ({allRapports.length})</h2>
       
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+        <table className="min-w-full divide-y divide-zinc-700 border border-zinc-700">
+          <thead className="bg-zinc-800">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Motif
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Bilan
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Visiteur
-              </th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-mono uppercase tracking-wider text-amber-500">Date</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-mono uppercase tracking-wider text-amber-500">Motif</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-mono uppercase tracking-wider text-amber-500">Bilan</th>
+              <th scope="col" className="px-6 py-3 text-left text-xs font-mono uppercase tracking-wider text-amber-500">Visiteur</th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {allRapports.map((rapport, index) => {
-              // Afficher les données complètes dans la console pour débogage
-              //console.log(`Rapport ${index}:`, rapport);
-              
-              return (
-                <tr key={index} className={rapport.idMedecin === parseInt(medecinId) ? "bg-green-50 hover:bg-green-100" : "hover:bg-gray-50"}>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {formatDate(rapport.date)}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {rapport.motif}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-500">
-                    <div className="max-h-20 overflow-y-auto">
-                      {rapport.bilan}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {rapport.nom} {rapport.prenom}
-                  </td>
-                </tr>
-              );
-            })}
+          <tbody className="bg-zinc-900 divide-y divide-zinc-800">
+            {allRapports.map((rapport, index) => (
+              <tr key={index} className={rapport.idMedecin === parseInt(medecinId) ? "bg-zinc-800 hover:bg-zinc-700 border-l-2 border-amber-600" : "hover:bg-zinc-800"}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-400">{formatDate(rapport.date)}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{rapport.motif}</td>
+                <td className="px-6 py-4 text-sm text-gray-400">
+                  <div className="max-h-20 overflow-y-auto">{rapport.bilan}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400">{rapport.nom} {rapport.prenom}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-      
-      {/* Affichage du debug pour vérifier les données**/}
-      {/*<div className="mt-8 p-4 bg-gray-100 rounded-lg">
-        <h3 className="text-lg font-semibold mb-2">Debug - Données brutes :</h3>
-        <pre className="bg-gray-800 text-white p-4 rounded overflow-x-auto text-xs">
-          {JSON.stringify(allRapports, null, 2)}
-        </pre>
-      </div>
-      */}
     </div>
   );
 };
